@@ -1,3 +1,4 @@
+
 version: 2.1
 
 orbs:
@@ -11,3 +12,11 @@ jobs:
       - checkout
       - run:
           command: ./gradlew build
+  build:
+    docker:
+      - image: 'node:latest'
+    steps:
+      - checkout
+      - sonarcloud/scan
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.1
